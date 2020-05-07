@@ -176,7 +176,7 @@ def avg_loss(returns, aggregate=None, compounded=True):
     return returns[returns < 0].dropna().mean()
 
 
-def volatility(returns, periods=252, annualize=True):
+def volatility(returns, periods=365, annualize=True):
     """ calculates the volatility of returns for a period """
     std = _utils._prepare_returns(returns).std()
     if annualize:
@@ -185,7 +185,7 @@ def volatility(returns, periods=252, annualize=True):
     return std
 
 
-def implied_volatility(returns, periods=252, annualize=True):
+def implied_volatility(returns, periods=365, annualize=True):
     """ calculates the implied volatility of returns for a period """
     logret = _utils.log_returns(returns)
     if annualize:
@@ -195,7 +195,7 @@ def implied_volatility(returns, periods=252, annualize=True):
 
 # ======= METRICS =======
 
-def sharpe(returns, rf=0., periods=252, annualize=True):
+def sharpe(returns, rf=0., periods=365, annualize=True):
     """
     calculates the sharpe ratio of access returns
 
@@ -205,7 +205,7 @@ def sharpe(returns, rf=0., periods=252, annualize=True):
     Args:
         * returns (Series, DataFrame): Input return series
         * rf (float): Risk-free rate expressed as a yearly (annualized) return
-        * periods (int): Frequency of returns (252 for daily, 12 for monthly)
+        * periods (int): Frequency of returns (365 for daily, 12 for monthly)
         * annualize: return annualize sharpe?
     """
 
@@ -221,7 +221,7 @@ def sharpe(returns, rf=0., periods=252, annualize=True):
     return res
 
 
-def sortino(returns, rf=0, periods=252, annualize=True):
+def sortino(returns, rf=0, periods=365, annualize=True):
     """
     calculates the sortino ratio of access returns
 
@@ -601,7 +601,7 @@ def information_ratio(returns, benchmark):
     return diff_rets.mean() / diff_rets.std()
 
 
-def greeks(returns, benchmark, periods=252.):
+def greeks(returns, benchmark, periods=365.):
     """ calculates alpha and beta of the portfolio """
 
     # ----------------------------
@@ -625,7 +625,7 @@ def greeks(returns, benchmark, periods=252.):
     }).fillna(0)
 
 
-def rolling_greeks(returns, benchmark, periods=252):
+def rolling_greeks(returns, benchmark, periods=365):
     """ calculates rolling alpha and beta of the portfolio """
     df = _pd.DataFrame(data={
         "returns": _utils._prepare_returns(returns),

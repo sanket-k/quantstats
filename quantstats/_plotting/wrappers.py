@@ -453,8 +453,8 @@ def drawdowns_periods(returns, periods=5, lw=1.5, log_scale=False,
 
 
 def rolling_beta(returns, benchmark,
-                 window1=126, window1_label="6-Months",
-                 window2=252, window2_label="12-Months",
+                 window1=182, window1_label="6-Months",
+                 window2=365, window2_label="12-Months",
                  lw=1.5, fontname='Arial', grayscale=False,
                  figsize=(10, 3), ylabel=True,
                  subtitle=True, savefig=None, show=True):
@@ -475,17 +475,17 @@ def rolling_beta(returns, benchmark,
 
 
 def rolling_volatility(returns, benchmark=None,
-                       period=126, period_label="6-Months",
+                       period=182, period_label="6-Months",
                        lw=1.5, fontname='Arial', grayscale=False,
                        figsize=(10, 3), ylabel="Volatility",
                        subtitle=True, savefig=None, show=True):
 
     returns = _utils._prepare_returns(returns)
-    returns = returns.rolling(period).std() * _np.sqrt(252)
+    returns = returns.rolling(period).std() * _np.sqrt(365)
 
     if benchmark is not None:
         benchmark = _utils._prepare_benchmark(benchmark, returns.index)
-        benchmark = benchmark.rolling(period).std() * _np.sqrt(252)
+        benchmark = benchmark.rolling(period).std() * _np.sqrt(365)
 
     _core.plot_rolling_stats(returns, benchmark,
                              hline=returns.mean(),
@@ -500,7 +500,7 @@ def rolling_volatility(returns, benchmark=None,
 
 
 def rolling_sharpe(returns, benchmark=None, rf=0.,
-                   period=126, period_label="6-Months",
+                   period=182, period_label="6-Months",
                    lw=1.25, fontname='Arial', grayscale=False,
                    figsize=(10, 3), ylabel="Sharpe",
                    subtitle=True, savefig=None, show=True):
@@ -528,7 +528,7 @@ def rolling_sharpe(returns, benchmark=None, rf=0.,
 
 
 def rolling_sortino(returns, benchmark=None, rf=0.,
-                    period=126, period_label="6-Months",
+                    period=182, period_label="6-Months",
                     lw=1.25, fontname='Arial', grayscale=False,
                     figsize=(10, 3), ylabel="Sortino",
                     subtitle=True, savefig=None, show=True):
