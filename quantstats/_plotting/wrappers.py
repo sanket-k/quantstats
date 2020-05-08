@@ -453,7 +453,7 @@ def drawdowns_periods(returns, periods=5, lw=1.5, log_scale=False,
 
 
 def rolling_beta(returns, benchmark,
-                 window1=182, window1_label="6-Months",
+                 window1=30, window1_label="Monthly",
                  window2=365, window2_label="12-Months",
                  lw=1.5, fontname='Arial', grayscale=False,
                  figsize=(10, 3), ylabel=True,
@@ -475,7 +475,7 @@ def rolling_beta(returns, benchmark,
 
 
 def rolling_volatility(returns, benchmark=None,
-                       period=182, period_label="6-Months",
+                       period=30, period_label="Monthly",
                        lw=1.5, fontname='Arial', grayscale=False,
                        figsize=(10, 3), ylabel="Volatility",
                        subtitle=True, savefig=None, show=True):
@@ -500,7 +500,7 @@ def rolling_volatility(returns, benchmark=None,
 
 
 def rolling_sharpe(returns, benchmark=None, rf=0.,
-                   period=182, period_label="6-Months",
+                   period=30, period_label="Monthly",
                    lw=1.25, fontname='Arial', grayscale=False,
                    figsize=(10, 3), ylabel="Sharpe",
                    subtitle=True, savefig=None, show=True):
@@ -528,7 +528,7 @@ def rolling_sharpe(returns, benchmark=None, rf=0.,
 
 
 def rolling_sortino(returns, benchmark=None, rf=0.,
-                    period=182, period_label="6-Months",
+                    period=30, period_label="Monthly",
                     lw=1.25, fontname='Arial', grayscale=False,
                     figsize=(10, 3), ylabel="Sortino",
                     subtitle=True, savefig=None, show=True):
